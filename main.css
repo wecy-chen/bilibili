@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style:none;
+}
+#biliNav{
+    position: fixed;
+    width: 32px;
+    top: 150px;
+    right: 50px;
+    border: 1px solid #ddd;
+}
+#biliNav li{
+    position: relative;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    cursor: pointer;
+}
+#biliNav li.last{
+    background: red;
+    color: #fff;
+    display: block;
+}
+
+#biliNav li span{
+    width: 32px;
+    height: 32px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#biliNav li span.active{
+    background: red;
+    color: #fff;
+    display: block;
+}
+
+#main{
+    width: 1000px;
+    margin: 0 auto;
+}
+#main .bili{
+    height: 600px;
+    line-height: 600px;
+    width: 100%;
+    font-size: 50px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}

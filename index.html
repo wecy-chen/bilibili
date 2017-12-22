@@ -3,106 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/main.css" type="text/css">
-    <script src="js/tool.js"></script>
-    <script src="js/Plan.js"></script>
-    <script src="js/Bullet.js"></script>
-    <script src="js/Enemy.js"></script>
-    <script src="js/Power.js"></script>
-
-    <script>
-        window.onload = function () {
-            var plan = new Plan();
-            Power.prototype.plan = plan;
-            var enemysObj = creatEnemy();
-            var bulletArr = startGame(plan,enemysObj)
-
-        }
-        function creatEnemy() {
-            var enemysObj = {enemy1: [], enemy2: [], enemy3: []};
-            for (var i = 0; i < 20; i++) {
-                var enemy1 = new Enemy(1);
-                enemysObj.enemy1.push(enemy1);
-                if (i % 5 == 0) {
-                    var enemy2 = new Enemy(2);
-                    enemysObj.enemy2.push(enemy2);
-                }
-                if (i % 4 == 0) {
-                    var enemy3 = new Enemy(3);
-                    enemysObj.enemy3.push(enemy3);
-                }
-            }
-            return enemysObj;
-        }
-
-
-        function startGame(plan,enemysObj) {
-            var bulletArray = [];
-            var powerArray = [];
-            for (var i = 0; i < 10; i++) {
-                var bullet = new Bullet(); //创建10个子弹实例
-                bulletArray.push(bullet); //把原型实例添加给数组
-
-                var power = new Power();
-                powerArray.push(power);
-            }
-            var showEnemy = 0;
-            //将子弹库传入敌机原型中
-            Enemy.prototype.bulletArray = bulletArray;
-
-            setInterval(function () {
-
-                showEnemy++;
-
-                elementMove(bulletArray, plan);
-
-                if (showEnemy % 3 == 0) {
-                    //TODO:起飞一架小飞机
-                    elementMove(enemysObj.enemy1)
-                }
-                if(showEnemy % 6 == 0){
-                    //TODO:起飞一架中飞机
-                    elementMove(enemysObj.enemy3)
-                }
-                if(showEnemy % 18 == 0){
-                    showEnemy = 0;
-                    //TODO:起飞一架大飞机
-                    elementMove(enemysObj.enemy2)
-                    //出现一个能量球
-                    elementMove(powerArray);
-                }
-
-
-            }, 300);
-
-            return bulletArray;
-        }
-
-
-
-        function elementMove(Array, plan) {
-            for (var i = 0; i < Array.length; i++) {
-                var eleObj = Array[i];
-                if (eleObj.isFlying === true) {
-                    continue;
-                } else {
-                    //将子弹移到飞机头部
-                    if(plan){
-                        eleObj.power = plan.power;
-                        eleObj.shoot();
-                        eleObj.bullet.style.left = plan.nX - 3 + 'px';
-                        eleObj.bullet.style.top = plan.nY - 54 + 'px';
-                    }else {
-                        eleObj.flyEnemy()
-                    }
-                    break;
-                }
-            }
-        }
-
-
-    </script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="main.js" type="text/javascript"></script>
 </head>
 <body>
+<div id="biliNav">
+    <ul>
+        <li>1F<span>直播</span></li>
+        <li>2F<span>动画</span></li>
+        <li>3F<span>番剧</span></li>
+        <li>4F<span>音乐</span></li>
+        <li>5F<span>舞蹈</span></li>
+        <li>6F<span>游戏</span></li>
+        <li>7F<span>科技</span></li>
+        <li>8F<span>生活</span></li>
+        <li>9F<span>鬼畜</span></li>
+        <li>10F<span>时尚</span></li>
+        <li>11F<span>广告</span></li>
+        <li class="last">Top</li>
+    </ul>
+</div>
+
+<!--楼层内容-->
+<div id="main">
+    <div class="bili" style="background: red">
+        直播
+    </div>
+    <div class="bili" style="background: orange">
+        动画
+    </div>
+    <div class="bili" style="background: yellow">
+        番剧
+    </div>
+    <div class="bili" style="background: green">
+        音乐
+    </div>
+    <div class="bili" style="background: cadetblue">
+        舞蹈
+    </div>
+    <div class="bili" style="background: blue">
+        游戏
+    </div>
+    <div class="bili" style="background: purple">
+        科技
+    </div>
+    <div class="bili" style="background: aqua">
+        生活
+    </div>
+    <div class="bili" style="background: brown">
+        鬼畜
+    </div>
+    <div class="bili" style="background: crimson">
+        时尚
+    </div>
+    <div class="bili" style="background: darkorange">
+       广告
+    </div>
+</div>
 </body>
 </html>
